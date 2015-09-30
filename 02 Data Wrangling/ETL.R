@@ -1,15 +1,15 @@
-setwd("/Users/patriciaobrien/DataVisualization/DV_RProject2/pums/")
+setwd("/Users/patriciaobrien/DataVisualization/DV_RProject2/01 Data")
 
-file_path <- "ss13pusa.csv"
+file_path <- "Employee_Salaries_-_2014.csv"
 
 df <- read.csv(file_path, stringsAsFactors = FALSE)
 
 # Replace "." (i.e., period) with "_" in the column names.
 names(df) <- gsub("\\.+", "_", names(df))
 
-# str(df) # Uncomment this and  run just the lines to here to get column types to use for getting the list of measures.
+#str(df) # Uncomment this and  run just the lines to here to get column types to use for getting the list of measures.
 
-measures <- c("Customer_ID", "Order_ID", "Postal_Code", "Row_ID", "Discount", "Gross_Profit_Ratio" , "Number_of_Records", "Order_Quantity", "Product_Base_Margin", "Profit", "Sales", "Shipping_Cost", "Unit_Price")
+measures <- c("Current_Annual_Salary", "X2014_Gross_Pay_Received", "X2014_Overtime_Pay")
 #measures <- NA # Do this if there are no measures.
 
 # Get rid of special characters in each column.
