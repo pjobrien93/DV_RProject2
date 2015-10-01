@@ -8,7 +8,17 @@ summary(df)
 head(df)
 
 # boxplot average salary, group by gender
-df %>% summarize(mean(X2014_GROSS_PAY_RECEIVED)) %>% group_by(GENDER) %>% ggplot(aes_string(x = GENDER), aes(y = X2014_GROSS_PAY_RECEIVED)) + geom_boxplot()
+# Doesn't Work
+#df %>% summarize(mean(X2014_GROSS_PAY_RECEIVED)) %>% group_by(GENDER) %>% ggplot(aes_string(x = GENDER), aes(y = X2014_GROSS_PAY_RECEIVED)) + geom_boxplot()
 
 # plot average salary group by department
-df %>% group_by(DEPARTMENT) %>% summarize(mean(CURRENT_ANNUAL_SALARY)) %>% ggplot(x = DEPARTMENT, aes(y = CURRENT_ANNUAL_SALARY), color = DEPARTMENT) + geom_point()
+# Doesn't work
+#df %>% group_by(DEPARTMENT) %>% summarize(mean(CURRENT_ANNUAL_SALARY)) %>% ggplot(x = DEPARTMENT, aes(y = CURRENT_ANNUAL_SALARY), color = DEPARTMENT) + geom_point()
+
+# This works, but doesn't mean anything.
+# Need to still tweak.
+df %>% mutate(price_percent = cume_dist(X2014_GROSS_PAY_RECEIVED)) %>% filter(price_percent <= .20 | price_percent >= .80) %>% ggplot(aes(x = X2014_GROSS_PAY_RECEIVED, y = CURRENT_ANNUAL_SALARY, color = GENDER)) + geom_point()
+
+# Mean Salary by Department, Colored by Gender
+# Women in each department are paid less than the males. The IGR department has a close salary with male and female. Biggest disparaty is ZAH department. 
+df %>% group_by(GENDER, DEPARTMENT) %>% summarise(mean_salary = mean(CURRENT_ANNUAL_SALARY)) %>% ggplot(aes(x=DEPARTMENT, y=mean_salary, color=GENDER)) + geom_point()
