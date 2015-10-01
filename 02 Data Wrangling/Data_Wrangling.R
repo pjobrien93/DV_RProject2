@@ -7,8 +7,8 @@ df
 summary(df)
 head(df)
 
-# plot average salary, group by gender
-df %>% group_by(GENDER) %>% summarize(mean(X2014_GROSS_PAY_RECEIVED)) %>% tbl_df
+# boxplot average salary, group by gender
+df %>% summarize(mean(X2014_GROSS_PAY_RECEIVED)) %>% group_by(GENDER) %>% ggplot(aes_string(x = GENDER), aes(y = X2014_GROSS_PAY_RECEIVED)) + geom_boxplot()
 
 # plot average salary group by department
-df %>% group_by(DEPARTMENT) %>% summarize(mean(CURRENT_ANNUAL_SALARY)) %>% tbl_df
+df %>% group_by(DEPARTMENT) %>% summarize(mean(CURRENT_ANNUAL_SALARY)) %>% ggplot(x = DEPARTMENT, aes(y = CURRENT_ANNUAL_SALARY), color = DEPARTMENT) + geom_point()
