@@ -7,5 +7,19 @@ output: html_document
 
 
 ```{r}
-source("../01 Data/Data_Wrangling.R", echo = TRUE)
+source("../02 Data Wrangling/Data_Wrang1.R", echo = TRUE)
 ```
+
+In this graph we plotted the average salary of each department by gender. The points tell us that the females' average salary in each department is generally below $100,000. However, there are several departments where the males' average salary s well above $100,000. The Office of Zoning and Administrative Hearings (ZAH) had the greatest average salary disparity between genders. Nine of the departments had higher average female salaries, but there wasn't a large difference between male average salary in the respective departments. 
+
+```{r}
+source("../02 Data Wrangling/Data_Wrang2.R", echo = TRUE)
+```
+
+Here we plotted the salaries of employees in the top 20 departments with the most people. Only 6 departments had more female than male employees. The department with the most males was the Fire and Rescue Services Department, while the department with the most females was the Department of Health and Human Services. As we can see, there are a 3 female employees that make over $200,000, but there are far more male employees that make more than $200,000. We can also see in the Department of Police that the females salaries cluster under $50,000, but there are many males who make more than $50,000. One thing to consider is that there are more males in the Fire and Rescue Services Department. The positions in this department might be more dangerous or require more specialization compared to the Department of Health and Human Services, which is the department with the most females. 
+
+```{r}
+source("../02 Data Wrangling/Data_Wrang3.R", echo = TRUE)
+```
+
+The plot above shows the gross pay distribution for males and females in full time and part time position. This box plot shows how the salaries are distributed between the males and females for each type of position. From this data, we can see that males, on average, are paid more than their female counter parts in full time positions. This may be because full time positions include a wide variety of jobs, which each earn different salaries. However, the interesting thing about this data is that it shows that females are, on average, paid more than their male counterparts in part time positions. This may be because more females work in part time positions because of factors such as motherhood. Unlike in the full time positions, the highest paid person in a part time position is a female.
